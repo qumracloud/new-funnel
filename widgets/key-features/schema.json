@@ -1,0 +1,15 @@
+{
+  "name": "key-features",
+  "settings": {
+    "title": {
+      "type": "text",
+      "label": { "ar": "العنوان", "en": "Title" },
+      "default": "مميزات تجعلها استثنائية"
+    },
+    "subtitle": {
+      "type": "textarea",
+      "label": { "ar": "وصف فرعي", "en": "Subtitle" },
+      "default": "كل ما تحتاجه في معصمك. تصميم أنيق وتقنية متطورة."
+    }
+  }
+}

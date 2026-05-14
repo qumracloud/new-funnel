@@ -1,0 +1,65 @@
+<section id="gallery" class="relative py-20 sm:py-28 bg-gradient-to-b from-[#0a1326] via-ink-950 to-ink-950 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+    <div class="text-center max-w-3xl mx-auto mb-10" data-aos="fade-up">
+      <span class="text-xs font-bold tracking-[0.3em] uppercase text-brand">المعرض</span>
+      <h2 class="mt-3 text-4xl sm:text-5xl font-black tracking-tight">{{ widget.data.title | default('نظرة عن قرب') }}</h2>
+      <p class="mt-4 text-white/65">{{ widget.data.subtitle | default('كل التفاصيل التي تجعلها فريدة من نوعها') }}</p>
+    </div>
+
+    <div class="relative" data-aos="zoom-in">
+      <div class="swiper product-gallery">
+        <div class="swiper-wrapper">
+          {% for image in product.images %}
+            <div class="swiper-slide">
+              <div class="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-ink-800 to-ink-950 border border-white/10">
+                <img src="{{ image.fileUrl }}" alt="{{ product.title }} - {{ loop.index }}"
+                     class="w-full h-full object-cover" loading="lazy" />
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="swiper-button-prev !text-white"></div>
+        <div class="swiper-button-next !text-white"></div>
+      </div>
+
+      {# Thumbs #}
+      <div class="mt-5 swiper product-gallery-thumbs">
+        <div class="swiper-wrapper">
+          {% for image in product.images %}
+            <div class="swiper-slide cursor-pointer">
+              <div class="aspect-square rounded-2xl overflow-hidden bg-ink-800 border-2 border-transparent transition">
+                <img src="{{ image.fileUrl }}" alt="thumb-{{ loop.index }}" class="w-full h-full object-cover" loading="lazy" />
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof Swiper === 'undefined') return;
+    const thumbs = new Swiper('.product-gallery-thumbs', {
+      slidesPerView: 4,
+      spaceBetween: 12,
+      watchSlidesProgress: true,
+      breakpoints: {
+        640: { slidesPerView: 5, spaceBetween: 14 },
+        1024: { slidesPerView: 7, spaceBetween: 16 }
+      }
+    });
+    new Swiper('.product-gallery', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      autoplay: { delay: 3500, disableOnInteraction: false },
+      navigation: { nextEl: '.product-gallery .swiper-button-next', prevEl: '.product-gallery .swiper-button-prev' },
+      thumbs: { swiper: thumbs }
+    });
+  });
+</script>

@@ -1,0 +1,30 @@
+<section class="relative py-20 sm:py-28 bg-ink-950 overflow-hidden">
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(124,92,255,0.18),transparent_60%)]"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center max-w-3xl mx-auto" data-aos="fade-up">
+      <span class="text-xs font-bold tracking-[0.3em] uppercase text-brand">التخصيص</span>
+      <h2 class="mt-3 text-4xl sm:text-5xl font-black tracking-tight">
+        عدد لا نهائي من
+        <span class="block mt-1 bg-clip-text text-transparent bg-gradient-to-r from-accent via-fuchsia-400 to-brand">واجهات الشاشة</span>
+      </h2>
+      <p class="mt-4 text-white/65 text-lg">اختر الواجهة اللي تعبّر عنك. أكثر من 100 تصميم حصري متاح في تطبيق cardoO.</p>
+    </div>
+
+    <div class="relative mt-12" data-aos="zoom-in">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(124,92,255,0.35),transparent_60%)] blur-3xl"></div>
+      {% if product.images[6] %}
+        <img src="{{ product.images[6].fileUrl }}" alt="watch faces"
+             class="relative w-full max-w-4xl mx-auto rounded-3xl object-contain" />
+      {% endif %}
+    </div>
+
+    <div class="mt-10 flex flex-wrap justify-center gap-3" data-aos="fade-up">
+      <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm">⌚ كلاسيكية</span>
+      <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm">🎨 رياضية</span>
+      <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm">✨ مينيمال</span>
+      <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm">🌌 مستقبلية</span>
+      <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm">🐾 ممرحة</span>
+    </div>
+  </div>
+</section>

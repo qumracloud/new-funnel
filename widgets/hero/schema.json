@@ -1,0 +1,25 @@
+{
+  "name": "hero",
+  "settings": {
+    "tagline": {
+      "type": "text",
+      "label": { "ar": "النص الصغير الأعلى", "en": "Top tagline" },
+      "default": "إصدار جديد · 2026"
+    },
+    "subtitle": {
+      "type": "textarea",
+      "label": { "ar": "الوصف الفرعي", "en": "Subtitle" },
+      "default": "ساعة ذكية بشاشة AMOLED مقاس 1.6 بوصة، أكثر من 100 وضع رياضي، ومتابعة صحية متكاملة بتقنية cardoO."
+    },
+    "ctaPrimary": {
+      "type": "text",
+      "label": { "ar": "زر أساسي", "en": "Primary CTA" },
+      "default": "اطلب الآن"
+    },
+    "ctaSecondary": {
+      "type": "text",
+      "label": { "ar": "زر ثانوي", "en": "Secondary CTA" },
+      "default": "اكتشف المميزات"
+    }
+  }
+}

@@ -1,0 +1,177 @@
+{% set unitPrice = product.pricing.price %}
+{% set shipping = widget.data.shippingPrice | default(70) %}
+
+<section id="order" class="relative py-20 sm:py-28 bg-gradient-to-b from-ink-950 to-[#070b18] overflow-hidden">
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(124,92,255,0.25),transparent_55%)]"></div>
+
+  <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center max-w-2xl mx-auto mb-10" data-aos="fade-up">
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs font-bold">
+        <span class="w-2 h-2 rounded-full bg-rose-400 animate-pulse"></span>
+        عرض محدود · الكميات تنتهي بسرعة
+      </span>
+      <h2 class="mt-4 text-3xl sm:text-5xl font-black tracking-tight">{{ widget.data.title | default('اطلب الآن بالدفع عند الاستلام') }}</h2>
+      <p class="mt-4 text-white/65">{{ widget.data.subtitle | default('املأ بياناتك وفريقنا هيتواصل معك لتأكيد الطلب خلال دقائق.') }}</p>
+    </div>
+
+    <div
+      x-data="orderForm({ price: {{ unitPrice }}, shipping: {{ shipping }}, stock: {{ product.quantity }} })"
+      class="grid lg:grid-cols-5 gap-6 lg:gap-8"
+      data-aos="fade-up">
+
+      {# Product summary #}
+      <aside class="lg:col-span-2 p-6 rounded-3xl bg-white/[0.04] border border-white/10 backdrop-blur-md self-start lg:sticky lg:top-24">
+        <div class="flex items-center gap-4">
+          {% if product.images[0] %}
+            <img src="{{ product.images[0].fileUrl }}" alt="{{ product.title }}"
+                 class="w-24 h-24 rounded-2xl object-cover bg-ink-800" />
+          {% endif %}
+          <div class="flex-1 min-w-0">
+            <div class="text-xs text-brand font-bold">cardoO Watch</div>
+            <h3 class="mt-1 font-extrabold text-lg leading-tight truncate">{{ product.title }}</h3>
+            <div class="mt-1 flex items-center gap-1 text-amber-300 text-xs">
+              ★★★★★ <span class="text-white/60 mr-1">(4.9)</span>
+            </div>
+          </div>
+        </div>
+
+        {# Quantity #}
+        <div class="mt-6">
+          <div class="text-xs font-bold text-white/70 mb-2">الكمية</div>
+          <div class="inline-flex items-center rounded-full border border-white/15 bg-white/[0.04]">
+            <button type="button" @click="dec()" class="w-10 h-10 grid place-items-center text-white/80 hover:text-white">−</button>
+            <span class="w-10 text-center font-bold" x-text="qty"></span>
+            <button type="button" @click="inc()" class="w-10 h-10 grid place-items-center text-white/80 hover:text-white">+</button>
+          </div>
+          {% if product.quantity > 0 and product.quantity <= 5 %}
+            <p class="mt-2 text-xs text-rose-300">⚡ متبقي {{ product.quantity }} قطع فقط!</p>
+          {% endif %}
+        </div>
+
+        {# Totals #}
+        <div class="mt-6 space-y-2 text-sm">
+          <div class="flex items-center justify-between text-white/70">
+            <span>سعر المنتج</span>
+            <span><span x-text="(price * qty).toLocaleString()"></span> جنيه</span>
+          </div>
+          <div class="flex items-center justify-between text-white/70">
+            <span>الشحن</span>
+            <span><span x-text="shipping.toLocaleString()"></span> جنيه</span>
+          </div>
+          <div class="border-t border-white/10 my-3"></div>
+          <div class="flex items-center justify-between font-extrabold text-lg">
+            <span>الإجمالي</span>
+            <span class="text-brand"><span x-text="total.toLocaleString()"></span> جنيه</span>
+          </div>
+        </div>
+
+        <div class="mt-6 grid grid-cols-3 gap-2 text-center text-[10px] text-white/60">
+          <div class="p-3 rounded-xl bg-white/[0.04]"><div class="text-base mb-1">🚚</div>شحن سريع</div>
+          <div class="p-3 rounded-xl bg-white/[0.04]"><div class="text-base mb-1">💵</div>دفع عند الاستلام</div>
+          <div class="p-3 rounded-xl bg-white/[0.04]"><div class="text-base mb-1">🛡️</div>ضمان سنة</div>
+        </div>
+      </aside>
+
+      {# Form #}
+      <form @submit.prevent="submit()" class="lg:col-span-3 p-6 sm:p-8 rounded-3xl bg-white/[0.03] border border-white/10 space-y-4">
+        <div>
+          <label class="text-xs font-bold text-white/75">الاسم الكامل</label>
+          <input type="text" required x-model="form.name" placeholder="مثال: أحمد محمد"
+                 class="mt-2 w-full px-4 py-3.5 rounded-xl bg-ink-900 border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent/30 outline-none transition" />
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs font-bold text-white/75">رقم الهاتف</label>
+            <input type="tel" required x-model="form.phone" placeholder="01XXXXXXXXX"
+                   class="mt-2 w-full px-4 py-3.5 rounded-xl bg-ink-900 border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent/30 outline-none transition" />
+          </div>
+          <div>
+            <label class="text-xs font-bold text-white/75">هاتف آخر (اختياري)</label>
+            <input type="tel" x-model="form.phone2" placeholder="01XXXXXXXXX"
+                   class="mt-2 w-full px-4 py-3.5 rounded-xl bg-ink-900 border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent/30 outline-none transition" />
+          </div>
+        </div>
+
+        <div>
+          <label class="text-xs font-bold text-white/75">المحافظة</label>
+          <select required x-model="form.city"
+                  class="mt-2 w-full px-4 py-3.5 rounded-xl bg-ink-900 border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent/30 outline-none transition">
+            <option value="">اختر المحافظة</option>
+            <option>القاهرة</option><option>الجيزة</option><option>الإسكندرية</option>
+            <option>الدقهلية</option><option>الشرقية</option><option>القليوبية</option>
+            <option>الغربية</option><option>المنوفية</option><option>كفر الشيخ</option>
+            <option>دمياط</option><option>البحيرة</option><option>الإسماعيلية</option>
+            <option>بورسعيد</option><option>السويس</option><option>شمال سيناء</option>
+            <option>جنوب سيناء</option><option>الفيوم</option><option>بني سويف</option>
+            <option>المنيا</option><option>أسيوط</option><option>سوهاج</option>
+            <option>قنا</option><option>الأقصر</option><option>أسوان</option>
+            <option>البحر الأحمر</option><option>الوادي الجديد</option><option>مطروح</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="text-xs font-bold text-white/75">العنوان بالتفصيل</label>
+          <textarea required rows="3" x-model="form.address" placeholder="الشارع، المنطقة، رقم العمارة والشقة"
+                    class="mt-2 w-full px-4 py-3.5 rounded-xl bg-ink-900 border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent/30 outline-none transition"></textarea>
+        </div>
+
+        <div>
+          <label class="text-xs font-bold text-white/75">ملاحظات (اختياري)</label>
+          <input type="text" x-model="form.notes" placeholder="أي ملاحظة على الطلب"
+                 class="mt-2 w-full px-4 py-3.5 rounded-xl bg-ink-900 border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent/30 outline-none transition" />
+        </div>
+
+        <button type="submit"
+                class="w-full mt-3 py-4 rounded-2xl bg-gradient-to-l from-accent to-brand text-ink-950 font-extrabold text-base shadow-[0_18px_45px_-12px_rgba(124,92,255,.7)] hover:scale-[1.01] transition flex items-center justify-center gap-2"
+                :disabled="loading">
+          <template x-if="!loading">
+            <span class="flex items-center gap-2">
+              تأكيد الطلب — <span x-text="total.toLocaleString()"></span> جنيه
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+          </template>
+          <template x-if="loading">
+            <span>جاري الإرسال…</span>
+          </template>
+        </button>
+
+        <p class="text-center text-xs text-white/50">
+          بضغطك على "تأكيد الطلب" فإنك توافق على شروط الخدمة. الدفع عند الاستلام.
+        </p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function orderForm({ price, shipping, stock }) {
+    return {
+      price: price,
+      shipping: shipping,
+      stock: stock,
+      qty: 1,
+      loading: false,
+      form: { name: '', phone: '', phone2: '', city: '', address: '', notes: '' },
+      get total() { return this.price * this.qty + this.shipping; },
+      inc() { if (!this.stock || this.qty < this.stock) this.qty++; },
+      dec() { if (this.qty > 1) this.qty--; },
+      async submit() {
+        this.loading = true;
+        try {
+          if (window.CartManager && typeof CartManager.add === 'function') {
+            await CartManager.add('{{ product._id }}', this.qty);
+          }
+          alert('تم استلام طلبك بنجاح! هنتواصل معك قريباً.');
+          this.form = { name: '', phone: '', phone2: '', city: '', address: '', notes: '' };
+          this.qty = 1;
+        } catch (e) {
+          alert('حدث خطأ، حاول مرة أخرى.');
+        } finally {
+          this.loading = false;
+        }
+      }
+    };
+  }
+</script>

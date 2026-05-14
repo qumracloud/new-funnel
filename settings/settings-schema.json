@@ -1,0 +1,15 @@
+[
+  {
+    "label": {
+      "ar": "اعدادات  المظهر",
+      "en": "Appearance Settings"
+    },
+    "settings": {
+      "mainColor": {
+        "type": "color",
+        "label": "Main Color",
+        "default": "#ff0000"
+      }
+    }
+  }
+]

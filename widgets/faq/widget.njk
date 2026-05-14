@@ -1,0 +1,61 @@
+<section id="faq" class="relative py-20 sm:py-28 bg-gradient-to-b from-ink-950 to-[#070b18]">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <span class="text-xs font-bold tracking-[0.3em] uppercase text-brand">FAQ</span>
+      <h2 class="mt-3 text-3xl sm:text-4xl font-black tracking-tight">أسئلة شائعة</h2>
+      <p class="mt-3 text-white/60">إجابات لأكثر الأسئلة شيوعاً عن ساعتك الجديدة</p>
+    </div>
+
+    <div class="space-y-3" x-data="{ open: 0 }">
+      <div class="rounded-2xl bg-white/[0.04] border border-white/10 overflow-hidden" data-aos="fade-up">
+        <button @click="open = open === 1 ? 0 : 1" class="w-full px-5 py-4 flex items-center justify-between text-right">
+          <span class="font-bold">هل الدفع عند الاستلام متاح؟</span>
+          <span class="w-7 h-7 rounded-full bg-accent/15 text-accent grid place-items-center transition" :class="open === 1 && 'rotate-45'">+</span>
+        </button>
+        <div x-show="open === 1" x-collapse class="px-5 pb-5 text-white/65 text-sm">
+          نعم، الدفع عند الاستلام متاح لجميع المحافظات في مصر. ادفع فقط عند استلام الساعة على بابك.
+        </div>
+      </div>
+
+      <div class="rounded-2xl bg-white/[0.04] border border-white/10 overflow-hidden" data-aos="fade-up">
+        <button @click="open = open === 2 ? 0 : 2" class="w-full px-5 py-4 flex items-center justify-between text-right">
+          <span class="font-bold">كم مدة الشحن؟</span>
+          <span class="w-7 h-7 rounded-full bg-accent/15 text-accent grid place-items-center transition" :class="open === 2 && 'rotate-45'">+</span>
+        </button>
+        <div x-show="open === 2" x-collapse class="px-5 pb-5 text-white/65 text-sm">
+          الشحن خلال 2-5 أيام عمل لجميع المحافظات. في القاهرة والجيزة من 24-48 ساعة.
+        </div>
+      </div>
+
+      <div class="rounded-2xl bg-white/[0.04] border border-white/10 overflow-hidden" data-aos="fade-up">
+        <button @click="open = open === 3 ? 0 : 3" class="w-full px-5 py-4 flex items-center justify-between text-right">
+          <span class="font-bold">هل الساعة متوافقة مع آيفون وأندرويد؟</span>
+          <span class="w-7 h-7 rounded-full bg-accent/15 text-accent grid place-items-center transition" :class="open === 3 && 'rotate-45'">+</span>
+        </button>
+        <div x-show="open === 3" x-collapse class="px-5 pb-5 text-white/65 text-sm">
+          نعم متوافقة مع iOS 10+ و Android 5+ عن طريق تطبيق cardoO المجاني.
+        </div>
+      </div>
+
+      <div class="rounded-2xl bg-white/[0.04] border border-white/10 overflow-hidden" data-aos="fade-up">
+        <button @click="open = open === 4 ? 0 : 4" class="w-full px-5 py-4 flex items-center justify-between text-right">
+          <span class="font-bold">هل أستطيع استبدالها لو فيها عيب؟</span>
+          <span class="w-7 h-7 rounded-full bg-accent/15 text-accent grid place-items-center transition" :class="open === 4 && 'rotate-45'">+</span>
+        </button>
+        <div x-show="open === 4" x-collapse class="px-5 pb-5 text-white/65 text-sm">
+          نعم، استبدال مجاني خلال 14 يوم في حالة وجود أي عيب صناعة. كل ساعة مغطاة بضمان لمدة سنة كاملة.
+        </div>
+      </div>
+
+      <div class="rounded-2xl bg-white/[0.04] border border-white/10 overflow-hidden" data-aos="fade-up">
+        <button @click="open = open === 5 ? 0 : 5" class="w-full px-5 py-4 flex items-center justify-between text-right">
+          <span class="font-bold">هل يمكن استخدامها في السباحة؟</span>
+          <span class="w-7 h-7 rounded-full bg-accent/15 text-accent grid place-items-center transition" :class="open === 5 && 'rotate-45'">+</span>
+        </button>
+        <div x-show="open === 5" x-collapse class="px-5 pb-5 text-white/65 text-sm">
+          نعم، الساعة مقاومة للماء بمعيار IP68 — تتحمل السباحة والاستحمام بسهولة.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

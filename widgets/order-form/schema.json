@@ -1,0 +1,20 @@
+{
+  "name": "order-form",
+  "settings": {
+    "title": {
+      "type": "text",
+      "label": { "ar": "العنوان", "en": "Title" },
+      "default": "اطلب الآن بالدفع عند الاستلام"
+    },
+    "subtitle": {
+      "type": "textarea",
+      "label": { "ar": "وصف", "en": "Subtitle" },
+      "default": "املأ بياناتك وفريقنا هيتواصل معك لتأكيد الطلب خلال دقائق."
+    },
+    "shippingPrice": {
+      "type": "number",
+      "label": { "ar": "تكلفة الشحن", "en": "Shipping price" },
+      "default": 70
+    }
+  }
+}

@@ -1,0 +1,59 @@
+/* ===== Reset & Base ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Tajawal', 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: #05070d;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* ===== Custom scrollbar ===== */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #05070d; }
+::-webkit-scrollbar-thumb { background: #1a2138; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #2a334d; }
+
+/* ===== Animations ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%      { transform: translateY(-12px) rotate(-1deg); }
+}
+@keyframes pulseBar {
+  0%   { transform: scaleY(0.4); opacity: .55; }
+  100% { transform: scaleY(1);   opacity: 1; }
+}
+
+/* ===== Swiper overrides ===== */
+.product-gallery .swiper-button-prev,
+.product-gallery .swiper-button-next {
+  --swiper-navigation-size: 22px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  transition: background .2s ease;
+}
+.product-gallery .swiper-button-prev:hover,
+.product-gallery .swiper-button-next:hover {
+  background: rgba(255,255,255,0.16);
+}
+
+.product-gallery-thumbs .swiper-slide-thumb-active > div {
+  border-color: #7c5cff !important;
+  box-shadow: 0 0 0 2px rgba(124,92,255,0.25);
+}
+
+/* ===== Selection ===== */
+::selection { background: #7c5cff; color: #fff; }
+
+/* ===== Smooth utility for x-collapse fallback ===== */
+[x-cloak] { display: none !important; }
+
+/* ===== Tajawal numeric Arabic fix ===== */
+input, textarea, select, button { font-family: inherit; }

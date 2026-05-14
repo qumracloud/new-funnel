@@ -1,0 +1,46 @@
+<section class="relative py-20 sm:py-28 bg-ink-950 overflow-hidden">
+  <div class="pointer-events-none absolute inset-0">
+    <div class="absolute -left-40 top-1/4 w-[600px] h-[600px] bg-[radial-gradient(circle,_rgba(62,224,201,0.35),transparent_60%)] blur-3xl"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-12 items-center">
+
+    <div class="relative order-2 lg:order-1" data-aos="fade-right">
+      {% if product.images[2] %}
+        <img src="{{ product.images[2].fileUrl }}" alt="cardoO intelligence"
+             class="relative w-full max-w-lg mx-auto rounded-3xl object-contain" />
+      {% endif %}
+
+      {# Voice wave overlay #}
+      <div class="absolute inset-x-0 bottom-10 flex items-center justify-center gap-1.5 z-10">
+        {% for i in range(0, 14) %}
+          <span class="block w-1 rounded-full bg-brand"
+                style="height: {{ 8 + (i * 5) % 32 }}px; animation: pulseBar 1.{{ i }}s ease-in-out infinite alternate"></span>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="order-1 lg:order-2" data-aos="fade-left">
+      <span class="text-xs font-bold tracking-[0.3em] uppercase text-brand">الذكاء</span>
+      <h2 class="mt-3 text-4xl sm:text-5xl font-black tracking-tight">
+        <span class="block">cardoO</span>
+        <span class="block bg-clip-text text-transparent bg-gradient-to-l from-brand via-cyan-300 to-accent">Intelligence</span>
+      </h2>
+      <p class="mt-5 text-white/70 text-lg leading-relaxed max-w-xl">
+        تتيح لك إجراء محادثات تفاعلية مباشرة من معصمك. تحدث مع المساعد الذكي، اطلب المعلومات، اكتب الرسائل واستقبل الردود بسرعة.
+      </p>
+
+      <div class="mt-7 grid sm:grid-cols-2 gap-3">
+        <div class="p-4 rounded-2xl bg-white/[0.04] border border-white/10">
+          <div class="text-brand font-bold text-sm">🎤 إجابات فورية</div>
+          <p class="mt-1 text-xs text-white/60">المسي الشاشة وتحدث</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-white/[0.04] border border-white/10">
+          <div class="text-brand font-bold text-sm">💬 محادثات ذكية</div>
+          <p class="mt-1 text-xs text-white/60">رد على الرسائل بصوتك</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

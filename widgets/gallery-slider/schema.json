@@ -1,0 +1,15 @@
+{
+  "name": "gallery-slider",
+  "settings": {
+    "title": {
+      "type": "text",
+      "label": { "ar": "العنوان", "en": "Title" },
+      "default": "نظرة عن قرب"
+    },
+    "subtitle": {
+      "type": "text",
+      "label": { "ar": "الوصف", "en": "Subtitle" },
+      "default": "كل التفاصيل التي تجعلها فريدة من نوعها"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+<section class="relative py-20 sm:py-28 bg-gradient-to-b from-ink-950 to-[#0a1326] overflow-hidden">
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-12 items-center">
+
+    <div class="relative order-2 lg:order-1" data-aos="fade-right">
+      {% if product.images[3] %}
+        <img src="{{ product.images[3].fileUrl }}" alt="always connected"
+             class="w-full max-w-xl mx-auto rounded-3xl object-cover shadow-2xl" />
+      {% endif %}
+
+      {# Floating notification cards #}
+      <div class="absolute top-6 -start-2 sm:start-6 z-10 max-w-[220px] p-3 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl" data-aos="fade-down-right" data-aos-delay="200">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-green-500 grid place-items-center text-white text-sm">💬</div>
+          <div class="text-xs">
+            <div class="font-bold">WhatsApp</div>
+            <div class="text-white/70 truncate">مرحباً! كيف حالك؟</div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-10 -end-2 sm:end-6 z-10 max-w-[220px] p-3 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl" data-aos="fade-up-left" data-aos-delay="300">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-rose-500 grid place-items-center text-white text-sm">📞</div>
+          <div class="text-xs">
+            <div class="font-bold">مكالمة واردة</div>
+            <div class="text-white/70">Ahmed Adel</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-1 lg:order-2" data-aos="fade-left">
+      <span class="text-xs font-bold tracking-[0.3em] uppercase text-brand">الاتصال</span>
+      <h2 class="mt-3 text-4xl sm:text-5xl font-black tracking-tight">
+        <span class="block">دائماً</span>
+        <span class="block bg-clip-text text-transparent bg-gradient-to-l from-accent to-brand">متصل</span>
+      </h2>
+      <p class="mt-5 text-white/70 text-lg max-w-xl">
+        مكالمات، رسائل، تنبيهات — وأكثر مما تتخيل من خلال ساعة. استلم إشعاراتك مباشرة على معصمك بدون الحاجة لإخراج الهاتف.
+      </p>
+
+      <div class="mt-7 space-y-3">
+        <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/10">
+          <span class="w-9 h-9 rounded-lg bg-green-500/15 text-green-300 grid place-items-center">💚</span>
+          <span class="text-sm">WhatsApp, Messenger, SMS</span>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/10">
+          <span class="w-9 h-9 rounded-lg bg-blue-500/15 text-blue-300 grid place-items-center">📱</span>
+          <span class="text-sm">تطبيقات السوشيال ميديا</span>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/10">
+          <span class="w-9 h-9 rounded-lg bg-amber-500/15 text-amber-300 grid place-items-center">⏰</span>
+          <span class="text-sm">تذكيرات وتقويم</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

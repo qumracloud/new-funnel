@@ -1,0 +1,18 @@
+{
+  "layout": "layout",
+  "widgets": [
+    { "name": "hero", "widget": "hero" },
+    { "name": "key-features", "widget": "key-features" },
+    { "name": "feature-amoled", "widget": "feature-amoled" },
+    { "name": "feature-voice", "widget": "feature-voice" },
+    { "name": "feature-waterproof", "widget": "feature-waterproof" },
+    { "name": "feature-connected", "widget": "feature-connected" },
+    { "name": "feature-faces", "widget": "feature-faces" },
+    { "name": "feature-health", "widget": "feature-health" },
+    { "name": "gallery-slider", "widget": "gallery-slider" },
+    { "name": "whats-in-box", "widget": "whats-in-box" },
+    { "name": "order-form", "widget": "order-form" },
+    { "name": "faq", "widget": "faq" },
+    { "name": "final-cta", "widget": "final-cta" }
+  ]
+}
